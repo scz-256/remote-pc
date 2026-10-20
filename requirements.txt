@@ -1,0 +1,11 @@
+# 服务端（我的电脑）：hub + MCP server + CLI
+fastapi>=0.115
+uvicorn[standard]>=0.30
+websockets>=13
+mcp>=1.2
+httpx>=0.27
+# 默认桌面界面
+PySide6>=6.7
+
+# 打包 exe 时才需要（可选）
+# pyinstaller>=6.0

@@ -1,0 +1,28 @@
+# 密钥在这里面。生成方式：python tools/gen_token.py
+# 千万别提交——拿到它就能连上对方那台机器。
+config.toml
+agent/config.toml
+*.local.toml
+
+# 改密钥时写文件留下的备份。**里面同样有那把密钥**，
+# 所以它和 config.toml 一样不能提交（`config.toml` 那条匹配不到 `config.toml.bak`）。
+*.bak
+
+# 审计日志：里面是完整命令历史和路径，只在本地留
+logs/
+*.jsonl
+
+# 打包产物
+dist/
+build/
+*.spec
+*.exe
+
+# 常规
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.venv/
+venv/
+.idea/
+.vscode/

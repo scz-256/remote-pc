@@ -1,0 +1,42 @@
+# 被控端 agent 配置。复制成 agent.toml 再改：
+#   copy config.example.toml agent.toml
+#   python agent.py --config agent.toml
+#
+# 命令行参数会覆盖这里的值。
+
+[agent]
+# 服务端的地址（你朋友那台机器的局域网 IP）
+server_url = "ws://10.22.114.127:8765"
+
+# 跟服务端 config.toml 里完全一致的预共享密钥
+token = "把服务端生成的 token 粘到这里"
+
+# 这台机器自己的标识，多台被控机时用来区分；不填就用主机名
+name = ""
+
+# 策略模式：
+#   safe    —— 只允许只读命令（先拿这个跑一遍，确认链路无误）
+#   confirm —— 默认。危险命令弹窗让你确认，其余直接执行
+#   auto    —— 不弹窗（出了事没有拦截点，谨慎）
+mode = "confirm"
+
+# 目录牢笼：设了之后，文件读写和 cd 都只能在这个目录内。
+# 强烈建议至少设成你自己的工作目录。
+# allow_root = "C:\\Users\\你的用户名\\work"
+
+# 默认工作目录（不填就用用户主目录）
+default_cwd = ""
+
+# 默认 shell：powershell / pwsh / cmd / bash
+# 只有 powershell 和 bash 会保持工作目录（cd 能跨命令生效）；cmd 每次都是新进程。
+shell = "powershell"
+
+# 一条危险命令的确认框等多久，超时算拒绝
+confirm_timeout_s = 60
+
+# 最多运行多少秒后自动退出（不填就一直跑）。
+# 比如设成 3600 就表示"一小时后自动断开"。
+# max_lifetime = 3600
+
+# 审计日志路径（默认写在 agent.py 同目录的 agent-audit.jsonl）
+# audit_path = "C:\\Users\\你的用户名\\agent-audit.jsonl"
